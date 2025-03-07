@@ -8,7 +8,7 @@
 %token INTEGER BOOLEAN
 %token <string Location.t> IDENT
 %token CLASS PUBLIC STATIC VOID MAIN STRING EXTENDS RETURN
-%token PLUS MINUS TIMES NOT LT AND GT
+%token PLUS MINUS TIMES NOT LT AND GT OR
 %token COMMA SEMICOLON
 %token ASSIGN
 %token LPAREN RPAREN LBRACKET RBRACKET LBRACE RBRACE
@@ -17,7 +17,7 @@
 %token IF ELSE WHILE
 %token EOF
 
-%left AND
+%left OR AND
 %nonassoc LT GT
 %left PLUS MINUS
 %left TIMES
@@ -147,6 +147,7 @@ raw_expression:
 | TIMES { OpMul }
 | LT    { OpLt }
 | GT    { OpGt }
+| OR    { OpOr }
 | AND   { OpAnd }
 
 instruction:
