@@ -31,6 +31,8 @@ let binop out = function
      fprintf out "&&"
   | OpOr ->
      fprintf out "||"
+  | OpEq ->
+     fprintf out "=="
 
 (** [expr out e], [expr0 out e], ..., [expr6 out e] print the expression [e]
     on the output channel [out]. [expr] is a synonym for [expr6].
