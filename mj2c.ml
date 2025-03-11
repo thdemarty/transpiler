@@ -476,9 +476,11 @@ let instr2c
          nl
 
     | ISyso e ->
-       fprintf out "printf(\"%%d\\n\", %a);"
-         (expr2c method_name class_info) e
-  in
+        match e.typ with
+          | TypInt -> fprintf out "printf(\"%%d\\n\", %a);" (expr2c method_name class_info) e
+          | TypBool -> fprintf out "printf(\"%%s\\n\", %a ? \"true\" : \"false\");" (expr2c method_name class_info) e
+          | _ -> assert false
+    in
   instr2c out ins
 
 (** [class_declaration2c out c] transpiles the name of a class [c] to a C structure declaration

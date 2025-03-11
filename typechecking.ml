@@ -264,8 +264,13 @@ let rec typecheck_instruction (cenv : class_env) (venv : variable_env) (vinit : 
       (TMJ.IWhile (cond', ibody'), vinit)
 
   | ISyso e ->
-     let e' = typecheck_expression_expecting cenv venv vinit instanceof TypInt e in
-     (TMJ.ISyso e', vinit)
+    (* SISO must display int and bool *)
+    let e' = typecheck_expression cenv venv vinit instanceof e in
+    if e'.typ = TypInt || e'.typ = TypBool then
+      (TMJ.ISyso e', vinit)
+    else
+      error e (sprintf "Type mismatch, expected %s or %s, got %s" (type_to_string TypInt) (type_to_string TypBool) (tmj_type_to_string e'.typ))
+      
 
 (** [occurences x bindings] returns the elements in [bindings] that have [x] has identifier. *)
 let occurrences (x : string) (bindings : (identifier * 'a) list) : identifier list =
