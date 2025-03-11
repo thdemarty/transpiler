@@ -133,7 +133,7 @@ let rec instr out = function
        id
        expr ei
        expr ev
-  | IIf (c, i1, i2) ->
+  | IIfElse (c, i1, i2) ->
       fprintf out "if (%a) %a%telse %a"
         expr c
         instr i1

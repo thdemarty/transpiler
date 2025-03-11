@@ -187,8 +187,8 @@ let rec print_instruction prefix out i =
   | IBlock l ->
      fprintf out "IBlock\n%a"
        (print_instruction_list prefix) l
-  | IIf (e, i1, i2) ->
-     fprintf out "IIf\n%s%s%a\n%s%s%a\n%s%s%a"
+  | IIfElse (e, i1, i2) ->
+     fprintf out "IIfElse\n%s%s%a\n%s%s%a\n%s%s%a"
        prefix'
        branch
        (print_expression (prefix' ^ pipe)) e
