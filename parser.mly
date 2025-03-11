@@ -17,6 +17,8 @@
 %token IF ELSE WHILE
 %token EOF
 
+%nonassoc NOELSE // Token bidon pour gérer le if sans else
+%nonassoc ELSE 
 %left OR
 %left AND
 %left EQ
@@ -169,6 +171,10 @@ instruction:
 
 | IF LPAREN c = expression RPAREN i1 = instruction ELSE i2 = instruction
    { IIfElse (c, i1, i2) }
+
+// If without else
+| IF LPAREN c = expression RPAREN i1 = instruction %prec NOELSE
+   { IIf (c, i1) }
 
 | WHILE LPAREN c = expression RPAREN i = instruction
    { IWhile (c, i) }
