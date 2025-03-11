@@ -133,12 +133,16 @@ let rec instr out = function
        id
        expr ei
        expr ev
-  | IIf (c, i1, i2) ->
+  | IIfElse (c, i1, i2) ->
       fprintf out "if (%a) %a%telse %a"
         expr c
         instr i1
         nl
         instr i2
+   | IIf (c, i1) ->
+      fprintf out "if (%a) %a"
+         expr c
+         instr i1
   | IWhile (c, i) ->
       fprintf out "while (%a) %a"
         expr c
