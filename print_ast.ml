@@ -59,42 +59,44 @@ let print_list print prefix out l =
 
 (** [print_constant out c] prints the constant [c] on the output channel [out]. *)
 let print_constant out = function
-  | ConstBool b ->
-     fprintf out "ConstBool %s" (string_of_bool b)
-  | ConstInt i ->
-     fprintf out "ConstInt %ld" i
+   | ConstBool b ->
+      fprintf out "ConstBool %s" (string_of_bool b)
+   | ConstInt i ->
+      fprintf out "ConstInt %ld" i
 
 (** [print_unop out op] prints the unary operator [op] on the output channel [out]. *)
 let print_unop out = function
-  | UOpNot ->
-     fprintf out "UOpNot"
+   | UOpNot ->
+      fprintf out "UOpNot"
 
 (** [print_binop out op] prints the binary operator [op] on the output channel [out]. *)
 let print_binop out = function
-  | OpAdd ->
-     fprintf out "OpAdd"
-  | OpSub ->
-     fprintf out "OpSub"
-  | OpMul ->
-     fprintf out "OpMul"
-  | OpDiv ->
-     fprintf out "OpDiv"
-  | OpLt  ->
-     fprintf out "OpLt"
-  | OpGt  ->
-     fprintf out "OpGt"
-  | OpLte ->
-     fprintf out "OpLte"
-  | OpGte ->
+   | OpAdd ->
+      fprintf out "OpAdd"
+   | OpSub ->
+      fprintf out "OpSub"
+   | OpMul ->
+      fprintf out "OpMul"
+   | OpMod ->
+      fprintf out "OpMod"
+   | OpDiv ->
+      fprintf out "OpDiv"
+   | OpLt  ->
+      fprintf out "OpLt"
+   | OpGt  ->
+      fprintf out "OpGt"
+   | OpLte ->
+      fprintf out "OpLte"
+   | OpGte ->
       fprintf out "OpGte"
-  | OpAnd ->
-     fprintf out "OpAnd"
-  | OpOr  ->  
-     fprintf out "OpOr"
-  | OpEq  ->  
-     fprintf out "OpEq"
-  | OpNeq ->  
-     fprintf out "OpNeq"
+   | OpAnd ->
+      fprintf out "OpAnd"
+   | OpOr  ->  
+      fprintf out "OpOr"
+   | OpEq  ->  
+      fprintf out "OpEq"
+   | OpNeq ->  
+      fprintf out "OpNeq"
 
 (** [print_expression prefix out e] prints the expression [e] on the output channel [out].
     [prefix] is the string already printed just before [e]. *)

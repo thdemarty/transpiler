@@ -23,6 +23,8 @@ let binop out = function
       fprintf out "*"
    | OpDiv ->
       fprintf out "/"
+   | OpMod ->
+      fprintf out "%"
    | OpLt  ->
       fprintf out "<"
    | OpGt  ->

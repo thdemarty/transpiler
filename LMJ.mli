@@ -31,6 +31,7 @@ and binop =
   | OpSub (** Binary operator [-]. *)
   | OpMul (** Binary operator [*]. *)
   | OpDiv (** Binary operator [/]. *)
+  | OpMod (** Binary operator [%]. *)
   | OpLt  (** Binary operator [<]. *)
   | OpGt  (** Binary operator [>]. *)
   | OpLte (** Binary operator [<=]. *)

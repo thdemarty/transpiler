@@ -29,6 +29,7 @@ rule get_token = parse
   | '-'       { MINUS }
   | '*'       { TIMES }
   | '/'       { DIV }
+  | '%'       { MOD }
   | "=="      { EQ }
   | "!="      { NEQ }
   | "&&"      { AND }
