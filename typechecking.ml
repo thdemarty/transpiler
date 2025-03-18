@@ -173,6 +173,13 @@ and typecheck_expression (cenv : class_env) (venv : variable_env) (vinit : S.t)
           error e2 (sprintf "Type mismatch, expected %s, got %s" (tmj_type_to_string e1'.typ) (tmj_type_to_string e2'.typ));
       mke (TMJ.EBinOp (OpEq, e1', e2')) TypBool (* return a boolean *)
   
+  | EBinOp (OpNeq, e1, e2) ->
+      let e1' = typecheck_expression cenv venv vinit instanceof e1 in
+      let e2' = typecheck_expression cenv venv vinit instanceof e2 in
+      if not (compatible Location.(type_tmj_to_lmj (startpos e) (endpos e) e1'.typ) Location.(type_tmj_to_lmj (startpos e) (endpos e) e2'.typ) instanceof) then
+          error e2 (sprintf "Type mismatch, expected %s, got %s" (tmj_type_to_string e1'.typ) (tmj_type_to_string e2'.typ));
+      mke (TMJ.EBinOp (OpNeq, e1', e2')) TypBool (* return a boolean *)
+
   | EBinOp (op, e1, e2) ->
       let expected, returned =
         match op with

@@ -307,6 +307,7 @@ let binop2c
   | OpAnd -> fprintf out "&&"
   | OpOr  -> fprintf out "||"
   | OpEq  -> fprintf out "=="
+  | OpNeq -> fprintf out "!="
 
 
 (** [type2c out typ] transpiles the type [typ] to C on the output channel [out]. *)

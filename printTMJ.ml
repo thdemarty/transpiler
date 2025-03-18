@@ -15,24 +15,31 @@ let constant out = function
 
 (** [binop out op] prints the binary operator [op] on the output channel [out]. *)
 let binop out = function
-  | OpAdd ->
-     fprintf out "+"
-  | OpSub ->
-     fprintf out "-"
-  | OpMul ->
-     fprintf out "*"
-  | OpDiv ->
-     fprintf out "/"
-  | OpLt  ->
-     fprintf out "<"
+   | OpAdd ->
+      fprintf out "+"
+   | OpSub ->
+      fprintf out "-"
+   | OpMul ->
+      fprintf out "*"
+   | OpDiv ->
+      fprintf out "/"
+   | OpLt  ->
+      fprintf out "<"
    | OpGt  ->
-     fprintf out ">"
-  | OpAnd ->
-     fprintf out "&&"
-  | OpOr ->
-     fprintf out "||"
-  | OpEq ->
-     fprintf out "=="
+      fprintf out ">"
+   | OpLte ->
+      fprintf out "<="
+   | OpGte ->
+      fprintf out ">="
+   | OpAnd ->
+      fprintf out "&&"
+   | OpOr ->
+      fprintf out "||"
+   | OpEq ->
+      fprintf out "=="
+   | OpNeq ->
+      fprintf out "!="
+
 
 (** [expr out e], [expr0 out e], ..., [expr6 out e] print the expression [e]
     on the output channel [out]. [expr] is a synonym for [expr6].
