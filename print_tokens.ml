@@ -56,6 +56,10 @@ let print_token show_loc out = function
       fprintf out "LT"
    | GT ->
       fprintf out "GT"
+   | GTE ->
+      fprintf out "GTE"
+   | LTE ->
+      fprintf out "LTE"
    | AND ->
       fprintf out "AND"
    | OR  ->

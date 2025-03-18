@@ -182,6 +182,8 @@ and typecheck_expression (cenv : class_env) (venv : variable_env) (vinit : S.t)
         | OpDiv -> TypInt, TypInt
         | OpLt  -> TypInt, TypBool
         | OpGt  -> TypInt, TypBool
+        | OpLte -> TypInt, TypBool
+        | OpGte -> TypInt, TypBool
         | OpAnd -> TypBool, TypBool
         | OpOr  -> TypBool, TypBool
         | _ -> assert false

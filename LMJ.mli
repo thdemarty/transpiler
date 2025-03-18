@@ -33,6 +33,8 @@ and binop =
   | OpDiv (** Binary operator [/]. *)
   | OpLt  (** Binary operator [<]. *)
   | OpGt  (** Binary operator [>]. *)
+  | OpLte (** Binary operator [<=]. *)
+  | OpGte (** Binary operator [>=]. *)
   | OpAnd (** Binary operator [&&]. *)
   | OpOr  (** Binary operator [||]. *)
   | OpEq  (** Binary operator [==]. *)
