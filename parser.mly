@@ -8,7 +8,7 @@
 %token INTEGER BOOLEAN
 %token <string Location.t> IDENT
 %token CLASS PUBLIC STATIC VOID MAIN STRING EXTENDS RETURN
-%token PLUS MINUS TIMES NOT LT AND GT OR DIV EQ NEQ LTE GTE MOD BITAND BITOR BITXOR LSHIFT RSHIFT
+%token PLUS MINUS TIMES NOT LT AND GT OR DIV EQ NEQ LTE GTE MOD BITAND BITOR BITXOR LSHIFT RSHIFT BITCOMP
 %token COMMA SEMICOLON
 %token ASSIGN
 %token LPAREN RPAREN LBRACKET RBRACKET LBRACE RBRACE
@@ -30,7 +30,7 @@
 %nonassoc LSHIFT RSHIFT
 %left PLUS MINUS
 %left DIV TIMES MOD
-%nonassoc NOT
+%nonassoc NOT IDENT BITCOMP
 %nonassoc DOT LBRACKET
 
 %start program
@@ -149,6 +149,8 @@ raw_expression:
 
 | NOT e = expression
    { EUnOp (UOpNot, e) }
+| BITCOMP e = expression
+   { EUnOp (UOpBitComp, e) }
 
 %inline binop:
 | PLUS  { OpAdd }

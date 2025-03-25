@@ -162,6 +162,7 @@ and typecheck_expression (cenv : class_env) (venv : variable_env) (vinit : S.t)
       let expected, returned =
         match op with
         | UOpNot -> TypBool, TypBool
+        | UOpBitComp -> TypInt, TypInt
       in
       let e' = typecheck_expression_expecting cenv venv vinit instanceof expected e in
       mke (TMJ.EUnOp (op, e')) returned

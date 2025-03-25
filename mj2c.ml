@@ -436,6 +436,10 @@ let expr2c
        fprintf out "!(%a)"
          expr2c e
 
+    | EUnOp (UOpBitComp, e) ->
+        fprintf out "~(%a)"
+          expr2c e
+
     | EBinOp (op, e1, e2) ->
        fprintf out "(%a %a %a)"
          expr2c e1

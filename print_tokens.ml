@@ -53,7 +53,7 @@ let print_token show_loc out = function
    | MOD ->
       fprintf out "MOD"
    | NOT ->
-      fprintf out "NOT"
+      fprintf out "NOT"  
    | LT ->
       fprintf out "LT"
    | GT ->
@@ -68,6 +68,8 @@ let print_token show_loc out = function
       fprintf out "OR"
    | EQ  ->
       fprintf out "EQ"
+   | BITCOMP ->
+      fprintf out "BITCOMP" 
    | BITAND ->
       fprintf out "BITAND"
    | BITOR ->

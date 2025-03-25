@@ -41,7 +41,9 @@ and binop = LMJ.binop =
   | OpLShift
   | OpRShift
 
-and unop = LMJ.unop = UOpNot
+and unop = LMJ.unop = 
+  | UOpNot
+  | UOpBitComp
 
 and instruction =
   | IBlock of instruction list

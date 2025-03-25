@@ -46,7 +46,9 @@ and binop =
   | OpLShift (** Binary operator [<<]. *)
   | OpRShift (** Binary operator [>>]. *)
 
-and unop = UOpNot (** Unary operator [!]. *)
+and unop = 
+  | UOpNot (** Unary operator [!]. *)
+  | UOpBitComp (** Unary operator [~]. *)
 
 and instruction =
   | IBlock of instruction list (** [IBlock [i1; i2; ...; in]] represents the instruction [{ i1 i2 ... in }]. *)

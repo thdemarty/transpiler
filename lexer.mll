@@ -58,6 +58,7 @@ rule get_token = parse
   | "int"     { INTEGER }
   | "boolean" { BOOLEAN }
   | "!"       { NOT }
+  | "~"       { BITCOMP }
   | ","       { COMMA }
   | "class"   { CLASS }
   | "public"  { PUBLIC }
