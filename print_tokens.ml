@@ -68,6 +68,16 @@ let print_token show_loc out = function
       fprintf out "OR"
    | EQ  ->
       fprintf out "EQ"
+   | BITAND ->
+      fprintf out "BITAND"
+   | BITOR ->
+      fprintf out "BITOR"
+   | BITXOR ->
+      fprintf out "BITXOR"
+   | LSHIFT ->
+      fprintf out "LSHIFT"
+   | RSHIFT ->
+      fprintf out "RSHIFT"
    | NEQ ->
       fprintf out "NEQ"
    | COMMA ->

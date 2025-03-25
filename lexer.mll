@@ -38,6 +38,11 @@ rule get_token = parse
   | ">"       { GT }
   | "<="      { LTE }
   | ">="      { GTE }
+  | "&"       { BITAND }
+  | "|"       { BITOR }
+  | "^"       { BITXOR }
+  | "<<"      { LSHIFT }
+  | ">>"      { RSHIFT }
   | '('       { LPAREN }
   | ')'       { RPAREN }
   | '['       { LBRACKET }

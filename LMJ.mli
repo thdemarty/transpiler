@@ -40,6 +40,11 @@ and binop =
   | OpOr  (** Binary operator [||]. *)
   | OpEq  (** Binary operator [==]. *)
   | OpNeq (** Binary operator [!=]. *)
+  | OpBitAnd (** Binary operator [&]. *)
+  | OpBitOr (** Binary operator [|]. *)
+  | OpBitXor (** Binary operator [^]. *)
+  | OpLShift (** Binary operator [<<]. *)
+  | OpRShift (** Binary operator [>>]. *)
 
 and unop = UOpNot (** Unary operator [!]. *)
 

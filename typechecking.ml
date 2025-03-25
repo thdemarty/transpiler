@@ -194,6 +194,11 @@ and typecheck_expression (cenv : class_env) (venv : variable_env) (vinit : S.t)
         | OpGte -> TypInt, TypBool
         | OpAnd -> TypBool, TypBool
         | OpOr  -> TypBool, TypBool
+        | OpBitAnd -> TypInt, TypInt
+        | OpBitOr  -> TypInt, TypInt
+        | OpBitXor -> TypInt, TypInt
+        | OpLShift -> TypInt, TypInt
+        | OpRShift -> TypInt, TypInt
         | _ -> assert false
       in
       let e1' = typecheck_expression_expecting cenv venv vinit instanceof expected e1 in

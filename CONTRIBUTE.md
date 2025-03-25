@@ -19,12 +19,14 @@ Essayer de se rapprocher de la syntaxe de Java
 
 
 à rajouter : 
+```
+& (bitwise and)
+| (bitwise or)
+^ (bitwise xor)
+~ (bitwise not)
+<< (bitwise left shift)
+>> (bitwise right shift)
 
-``` 
-% 
-& 
-| 
-^
 ajout strings
 ajout float
 ajout interface

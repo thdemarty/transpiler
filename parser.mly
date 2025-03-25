@@ -8,7 +8,7 @@
 %token INTEGER BOOLEAN
 %token <string Location.t> IDENT
 %token CLASS PUBLIC STATIC VOID MAIN STRING EXTENDS RETURN
-%token PLUS MINUS TIMES NOT LT AND GT OR DIV EQ NEQ LTE GTE MOD
+%token PLUS MINUS TIMES NOT LT AND GT OR DIV EQ NEQ LTE GTE MOD BITAND BITOR BITXOR LSHIFT RSHIFT
 %token COMMA SEMICOLON
 %token ASSIGN
 %token LPAREN RPAREN LBRACKET RBRACKET LBRACE RBRACE
@@ -17,12 +17,17 @@
 %token IF ELSE WHILE FOR
 %token EOF
 
+// see: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html
 %nonassoc NOELSE // Token bidon pour gérer le if sans else
 %nonassoc ELSE 
 %left OR
 %left AND
+%nonassoc BITOR
+%nonassoc BITXOR
+%nonassoc BITAND
 %left EQ NEQ
 %nonassoc LT GT LTE GTE
+%nonassoc LSHIFT RSHIFT
 %left PLUS MINUS
 %left DIV TIMES MOD
 %nonassoc NOT
@@ -159,6 +164,11 @@ raw_expression:
 | EQ    { OpEq }
 | NEQ   { OpNeq }
 | MOD   { OpMod }
+| BITAND { OpBitAnd }
+| BITOR  { OpBitOr }
+| BITXOR { OpBitXor }
+| LSHIFT { OpLShift }
+| RSHIFT { OpRShift }
 
 instruction:
 | b = block
