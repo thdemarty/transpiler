@@ -3,6 +3,7 @@
   let swap = List.map (fun (x, y) -> (y, x))
 %}
 
+%token <string> STRING_CONST
 %token <int32> INT_CONST
 %token <bool> BOOL_CONST
 %token INTEGER BOOLEAN
@@ -117,6 +118,9 @@ expression:
    { e }
 
 raw_expression:
+| s = STRING_CONST
+   { EConst (ConstString s) }
+   
 | i = INT_CONST
    { EConst (ConstInt i) }
 
@@ -203,6 +207,8 @@ block:
    { IBlock is }
 
 typ:
+| STRING
+   { TypString }
 | INTEGER
    { TypInt }
 | BOOLEAN

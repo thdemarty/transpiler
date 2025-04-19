@@ -25,6 +25,7 @@ and raw_expression =
 and constant =
   | ConstBool of bool (** Boolean constant [true] or [false]. *)
   | ConstInt of int32 (** Integer constant [[-2^31, 2^31 - 1]]. *)
+  | ConstString of string (** String constant. *)
 
 and binop =
   | OpAdd (** Binary operator [+]. *)
@@ -61,6 +62,7 @@ and instruction =
   | IArraySet of identifier * expression * expression (** [IArraySet (id, e1, e2)] represents the instruction [id[e1] = e2;]. *)
 
 and typ =
+  | TypString (** Type [String]. *)
   | TypInt (** Type [int]. *)
   | TypBool (** Type [bool]. *)
   | TypIntArray (** Type [int[]]. *)

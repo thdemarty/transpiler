@@ -58,6 +58,7 @@ let clookup : identifier -> class_env -> class_type = lookup "class"
 let rec compatible (typ1 : typ) (typ2 : typ) (instanceof : identifier -> identifier -> bool) : bool =
   match typ1, typ2 with
   | TypInt, TypInt
+  | TypString, TypString
   | TypBool, TypBool
   | TypIntArray, TypIntArray -> true
   | Typ t1, Typ t2 -> instanceof t1 t2
@@ -68,6 +69,7 @@ let rec type_lmj_to_tmj = function
   | TypInt      -> TMJ.TypInt
   | TypBool     -> TMJ.TypBool
   | TypIntArray -> TMJ.TypIntArray
+  | TypString   -> TMJ.TypString 
   | Typ id      -> TMJ.Typ (Location.content id)
 
 (** [typ_tmj_to_lmj s e t] converts the [TMJ] type [t] into the equivalent [LMJ] type using location starting position [s] and location ending position [e]. *)
@@ -75,6 +77,7 @@ let rec type_tmj_to_lmj startpos endpos = function
 | TMJ.TypInt      -> TypInt
 | TMJ.TypBool     -> TypBool
 | TMJ.TypIntArray -> TypIntArray
+| TMJ.TypString   -> TypString
 | TMJ.Typ id      -> Typ (Location.make startpos endpos id)
 
 (** [tmj_type_to_string t] converts the [TMJ] type [t] into a string representation. *)
@@ -82,6 +85,7 @@ let rec tmj_type_to_string : TMJ.typ -> string = function
   | TMJ.TypInt -> "integer"
   | TMJ.TypBool -> "boolean"
   | TMJ.TypIntArray -> "int[]"
+  | TMJ.TypString -> "string"
   | TMJ.Typ t -> t
 
 (** [type_to_string t] converts the [LMJ] type [t] into a string representation. *)
@@ -150,6 +154,9 @@ and typecheck_expression (cenv : class_env) (venv : variable_env) (vinit : S.t)
 
   | EConst (ConstInt i) ->
       mke (TMJ.EConst (ConstInt i)) TypInt
+
+  | EConst (ConstString s) ->
+      mke (TMJ.EConst (ConstString s)) TypString
 
   | EGetVar v ->
      let typ = vlookup v venv in
@@ -293,11 +300,11 @@ let rec typecheck_instruction (cenv : class_env) (venv : variable_env) (vinit : 
   | ISyso e ->
     (* SISO must display int and bool *)
     let e' = typecheck_expression cenv venv vinit instanceof e in
-    if e'.typ = TypInt || e'.typ = TypBool then
+    match e'.typ with
+    | TypInt | TypBool | TypString -> 
       (TMJ.ISyso e', vinit)
-    else
+    | _ ->
       error e (sprintf "Type mismatch, expected %s or %s, got %s" (type_to_string TypInt) (type_to_string TypBool) (tmj_type_to_string e'.typ))
-      
 
 (** [occurences x bindings] returns the elements in [bindings] that have [x] has identifier. *)
 let occurrences (x : string) (bindings : (identifier * 'a) list) : identifier list =

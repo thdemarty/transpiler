@@ -20,6 +20,7 @@ and raw_expression =
 and constant = LMJ.constant =
   | ConstBool of bool
   | ConstInt of int32
+  | ConstString of string
 
 and binop = LMJ.binop =
   | OpAdd
@@ -56,6 +57,7 @@ and instruction =
   | IArraySet of identifier * expression * expression
 
 and typ =
+  | TypString
   | TypInt
   | TypBool
   | TypIntArray

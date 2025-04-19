@@ -19,6 +19,9 @@ let integer = digit+
 let space = [' ' '\t' '\r']
 let letter = ['a'-'z''A'-'Z''_']
 let ident = letter (digit | letter)*
+let string_char = [^ '"' '\\' '\n'] | ('\\' ['n' 't' 'r' '\\' '"'])
+let string = '"' string_char* '"'
+
 
 rule get_token = parse
   | "//" [^ '\n']* '\n'
@@ -56,6 +59,7 @@ rule get_token = parse
   | "true"    { BOOL_CONST true }
   | "false"   { BOOL_CONST false }
   | "int"     { INTEGER }
+  | "string"  { STRING }
   | "boolean" { BOOLEAN }
   | "!"       { NOT }
   | "~"       { BITCOMP }
@@ -76,6 +80,12 @@ rule get_token = parse
   | "else"  { ELSE }
   | "while" { WHILE }
   | "for"   { FOR }
+  | string as s
+      {
+        (* Remove the quotes *)
+        let str = String.sub s 1 (String.length s - 2) in
+        STRING_CONST (String.escaped str)
+      }
   | integer as i
       {
         try
