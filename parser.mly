@@ -31,7 +31,7 @@
 %nonassoc LSHIFT RSHIFT
 %left PLUS MINUS
 %left DIV TIMES MOD
-%nonassoc NOT IDENT BITCOMP
+%nonassoc NOT BITCOMP
 %nonassoc DOT LBRACKET
 
 %start program
