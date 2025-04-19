@@ -283,6 +283,8 @@ let print_type out typ =
      fprintf out "int"
   | TypBool ->
      fprintf out "bool"
+  | TypString ->
+     fprintf out "string"
   | TypIntArray ->
      fprintf out "int[]"
   | Typ id ->
