@@ -22,14 +22,14 @@ to [C](https://en.wikipedia.org/wiki/C_%28programming_language%29).\
 - Syso:
     - [x] Print boolean
     - [x] Print string
-    - [ ] Print float
+    - [x] Print float
 - Control Flow:
     - [x] If without else
     - [x] For loop
 - Others:
     - [x] String support
     - [ ] String array support
-    - [ ] Float support
+    - [x] Float support
     - [ ] Float array support
     - [x] Multiple instructions in main
     - [x] Declaration and initialization at the same time

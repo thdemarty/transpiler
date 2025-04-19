@@ -21,6 +21,7 @@ and constant = LMJ.constant =
   | ConstBool of bool
   | ConstInt of int32
   | ConstString of string
+  | ConstFloat of float
 
 and binop = LMJ.binop =
   | OpAdd
@@ -58,6 +59,7 @@ and instruction =
 
 and typ =
   | TypString
+  | TypFloat
   | TypInt
   | TypBool
   | TypIntArray

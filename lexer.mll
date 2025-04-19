@@ -21,6 +21,9 @@ let letter = ['a'-'z''A'-'Z''_']
 let ident = letter (digit | letter)*
 let string_char = [^ '"' '\\' '\n'] | ('\\' ['n' 't' 'r' '\\' '"'])
 let string = '"' string_char* '"'
+(* Approximate floating point number grammar *)
+(* See https://docs.oracle.com/javase/specs/jls/se24/html/jls-3.html#jls-FloatingPointLiteral *)
+let float = digit+ '.' digit+ | digit+ '.' digit* | '.' digit+
 
 
 rule get_token = parse
@@ -59,6 +62,7 @@ rule get_token = parse
   | "true"    { BOOL_CONST true }
   | "false"   { BOOL_CONST false }
   | "int"     { INTEGER }
+  | "float"   { FLOAT }
   | "string"  { STRING }
   | "boolean" { BOOLEAN }
   | "!"       { NOT }
@@ -80,6 +84,13 @@ rule get_token = parse
   | "else"  { ELSE }
   | "while" { WHILE }
   | "for"   { FOR }
+  | float as f ('f'|'F')
+      {
+        try
+            FLOAT_CONST (float_of_string f)
+          with Failure _ ->
+          raise (Error "Invalid float constant")
+      }
   | string as s
       {
         (* Remove the quotes *)

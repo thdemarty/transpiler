@@ -63,6 +63,8 @@ let print_constant out = function
       fprintf out "ConstBool %s" (string_of_bool b)
    | ConstInt i ->
       fprintf out "ConstInt %ld" i
+   | ConstFloat f ->
+      fprintf out "ConstFloat %f" f
    | ConstString s ->
       fprintf out "ConstString \"%s\"" s
 
@@ -281,6 +283,8 @@ let print_type out typ =
   match typ with
   | TypInt ->
      fprintf out "int"
+  | TypFloat ->
+     fprintf out "float"
   | TypBool ->
      fprintf out "bool"
   | TypString ->
