@@ -22,7 +22,7 @@ to [C](https://en.wikipedia.org/wiki/C_%28programming_language%29).\
 - Syso:
     - [x] Print boolean
     - [x] Print string
-    - [x] Print float
+    - [ ] Print float
 - Control Flow:
     - [x] If without else
     - [x] For loop
@@ -32,6 +32,7 @@ to [C](https://en.wikipedia.org/wiki/C_%28programming_language%29).\
     - [ ] Float support
     - [ ] Float array support
     - [x] Multiple instructions in main
+    - [x] Declaration and initialization at the same time
 
 
 ### Install Dependencies
