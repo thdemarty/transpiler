@@ -20,17 +20,17 @@ Essayer de se rapprocher de la syntaxe de Java
 
 à rajouter : 
 ```
-& (bitwise and)
-| (bitwise or)
-^ (bitwise xor)
-~ (bitwise not)
-<< (bitwise left shift)
->> (bitwise right shift)
-
 ajout strings
 ajout float
 ajout interface
 ajout surcharge de fonctions
+ajout réflexion
 lambda fonction (hard)
+do while
+déclaration de variable en dehors de l'entête de fonction
+mettre un return pas à la fin (early return)
+mettre une expression sans avoir à la mettre dans une variable
+assigner une valeur à une variable en même temps que sa déclaration
+ternary operator
 ```
 
