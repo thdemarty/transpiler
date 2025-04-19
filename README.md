@@ -2,7 +2,37 @@
 
 `mini-java` is an educational transpiler from [MiniJava](http://www.cambridge.org/resources/052182060X/), which is a subset of [Java](https://en.wikipedia.org/wiki/Java_%28programming_language%29),
 to [C](https://en.wikipedia.org/wiki/C_%28programming_language%29).\
-The construction of this transpiler is documented on [www.mrcoder.org](https://www.mrcoder.org/en/compiler/minijava/).
+
+## Tasks
+- Operators:
+    - [x] Greater than (`>`)
+    - [x] Or (`||`)
+    - [x] Division (`/`)
+    - [x] Equal (`==`) (working not-only for primitive types)
+    - [x] Less than or equals (`<=`)
+    - [x] Greater than or equals (`>=`)
+    - [x] Not equals (`!=`)
+    - [x] Modulus (`%`)
+    - [x] Bitwise and (`&`)
+    - [x] Bitwise or (`|`)
+    - [x] Bitwise xor (`^`)
+    - [x] Bitwise not (`~`)
+    - [x] Bitwise left shift (`<<`)
+    - [x] Bitwise right shift (`>>`)
+- Syso:
+    - [x] Print boolean
+    - [x] Print string
+    - [x] Print float
+- Control Flow:
+    - [x] If without else
+    - [x] For loop
+- Others:
+    - [x] String support
+    - [ ] String array support
+    - [ ] Float support
+    - [ ] Float array support
+    - [x] Multiple instructions in main
+
 
 ### Install Dependencies
 
